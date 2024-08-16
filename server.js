@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 3500;
 
 console.log(process.env.NODE_ENV);
 
-connectDB()
+connectDB();
 
-app.use(logger)
+app.use(logger);
 
 app.use(cors(corsOptions));
 
@@ -26,6 +26,7 @@ app.use(cookieParser());
 app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use("/", require("./routes/root"));
+app.use("/users", require("./routes/userRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);
